@@ -1,25 +1,26 @@
 <?php
 
 use EastAndDDD\Infrastructure\EmployeeRepository;
-use EastAndDDD\Model\EmployeeFactory;
+use EastAndDDD\Model\HireService;
 use EastAndDDD\Model\Manager;
+use EastAndDDD\Model\Performance;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$engineer1 = EmployeeFactory::hireEngineer('Pamela', 'Andersen', 'jklsdkj44', 'junior engineer', 34000);
-$engineers = array('Andersen' => $engineer1);
-$manager = EmployeeFactory::hireManager('Peter', 'Smith', 'khsubvv', 'Product manager', 5784104872458, $engineers);
+$employeeRepository = new EmployeeRepository();
+$hireService = new HireService($employeeRepository);
 
-$repository = new EmployeeRepository();
-$repository->wasAskedToSaveEmployeeBy(null, $engineer1);
-$repository->wasAskedToSaveEmployeeBy(null, $manager);
+$manager = $hireService->managerWasHired('Peter', 'Smith', 'khsubvv', 'Product manager', 578410487245);
+
+$hireService->engineerWasHiredBy($manager, 'Pamela', 'Andersen', 'jklsdkj44', 'junior engineer', 34000);
+
+
 
 /* @var $manager Manager  */
-$manager = $repository->findManagerByLastName('Smith');
+$manager = $employeeRepository->findManagerByLastName('Smith');
+
 $manager->wasAskedAPromotionBy('Andersen');
 
-$manager->establishedNewPerformanceCriteria(new EastAndDDD\Model\Performance(10));
+$manager->establishedNewPerformanceCriteria(new Performance(10));
 $manager->wasAskedAPromotionBy('Andersen');
-
-
 

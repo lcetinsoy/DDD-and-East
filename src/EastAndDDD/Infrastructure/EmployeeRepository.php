@@ -6,8 +6,8 @@ use EastAndDDD\Model\AbstractRepository;
 use EastAndDDD\Model\Employee;
 use EastAndDDD\Model\EmployeeRepositoryInterface;
 use EastAndDDD\Model\Engineer;
+use EastAndDDD\Model\HireService;
 use EastAndDDD\Model\Manager;
-use Exception;
 
 class EmployeeRepository extends AbstractRepository implements EmployeeRepositoryInterface {
 
@@ -20,36 +20,34 @@ class EmployeeRepository extends AbstractRepository implements EmployeeRepositor
         $this->engineers = $engineers;
     }
 
-    public function wasAskedToSaveEmployeeBy($controller, Employee $employee) {
+    public function wasAskedToSaveManagerBy(HireService $service, Employee $employee) {
 
         $employee->wasAskedLastNameBy($this);
 
         if (!$this->employeeLastName) {
 
-            if ($controller) {
-                $controller->cannotSaveEmploye('name is missing');
+            $service->cannotSaveEmploye('name is missing');
 
-                return $this;
-            }
-
-            throw new Exception(' cannot save employee, name is missing');
+            return $this;
         }
+
 
         if ($employee instanceof Manager) {
             $this->managers[$this->employeeLastName] = $employee;
         }
 
         if ($employee instanceof Engineer) {
-                $this->engineers[$this->employeeLastName] = $employee;
+            $this->engineers[$this->employeeLastName] = $employee;
         }
 
-        if ($controller) {
+        $service->managerWasSaved();
+        return $this;
+    }
 
-            $controller->employeeWasSaved();
-        }
-        else {
-            echo "employee was saved\n";
-        }
+    public function engineerWasHired($engineer) {
+
+        $this->engineers[] = $engineer;
+
         return $this;
     }
 

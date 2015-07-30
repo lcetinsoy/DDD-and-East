@@ -4,6 +4,6 @@ namespace EastAndDDD\Model;
 
 interface EmployeeRepositoryInterface {
 
-    public function wasAskedToSaveEmployeeBy($controller, Employee $employe);
+            public function wasAskedToSaveManagerBy(HireService $service, Employee $employe);
     
 }

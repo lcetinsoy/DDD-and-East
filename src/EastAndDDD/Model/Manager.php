@@ -13,6 +13,13 @@ class Manager extends Employee implements ManagerEngineerInterface {
         $this->engineers = $engineers;
     }
 
+    public function engineerWasHired(Engineer $engineer, $lastName) {
+
+        $this->engineers[$lastName] = $engineer;
+
+        return $this;
+    }
+
     public function establishedNewPerformanceCriteria(Performance $performance) {
 
         $this->performanceCriteria = $performance;

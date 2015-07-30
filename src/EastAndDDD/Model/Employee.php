@@ -14,9 +14,11 @@ abstract class Employee {
         $this->identityInfo = $identityInfo;
     }
 
-            function wasAskedLastNameBy(AbstractRepository $repository) {
+    function wasAskedLastNameBy(AbstractRepository $repository) {
 
         $repository->employeeLastNameIs($this->identityInfo->getLastName());
+
+        return $this;
     }
 
 }
