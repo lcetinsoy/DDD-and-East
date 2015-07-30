@@ -4,7 +4,8 @@
     },
     "autoload": {
         "psr-4": {
-            "EastAndDDD\\": "src/EastAndDDD/"
+            "EastAndDDD\\": "src/EastAndDDD/",
+            "DDD\\": "src/DDD/"
         }
     }
 }
