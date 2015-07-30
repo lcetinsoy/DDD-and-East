@@ -19,4 +19,16 @@ class IdentityInfo {
         return $this->bankAccountNumber == $identity->bankAccountNumber;
     }
 
+    function getName() {
+        return $this->name;
+    }
+
+    function getLastName() {
+        return $this->lastName;
+    }
+
+    function getBankAccountNumber() {
+        return $this->bankAccountNumber;
+    }
+
 }

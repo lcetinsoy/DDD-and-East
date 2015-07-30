@@ -4,20 +4,28 @@ namespace EastAndDDD\Model;
 
 class Engineer extends Employee implements EngineerManagerInterface {
 
-    function __construct(EmployeeCredentials $credentials, IdentityInfo $identityInfo, Position $position) {
-        parent::__construct($credentials, $identityInfo);
-        $this->position = $position;
-        $this->annualPay = $annualPay;
+    private $billedHours;
+
+    function __construct(EmployeeCredentials $credentials, IdentityInfo $identityInfo, Position $position, $billingHour = 0) {
+        parent::__construct($credentials, $identityInfo, $position);
+        $this->billedHours = $billingHour;
     }
 
-    function promotionWasRefusedBy() {
+    function promotionWasRefusedBy(Manager $manager) {
 
-        $this->quit('I QUIT');
+        echo "employee: I QUIT \n";
 
         return $this;
     }
 
-    public function promotionWasAcceptedBy(Manager $manager, $newPromotion) {
+    public function billedHours($hourCount) {
+
+        $this->billedHours += $hourCount;
+
+        return $this;
+    }
+
+    public function promotionWasAcceptedBy(Manager $manager, Promotion $newPromotion) {
 
         $this->position = $newPromotion->getNewPosition();
 
@@ -28,8 +36,14 @@ class Engineer extends Employee implements EngineerManagerInterface {
         return $this;
     }
 
-    public function promotionWillBeStudied($manager) {
-        echo "OK, I wait";
+    public function promotionWillBeStudied(Manager $manager) {
+        echo "employee: OK, I wait\n";
+
+        return $this;
+    }
+
+    public function wasRequestedPerformanceDataBy(Manager $manager) {
+        return new Performance($this->billedHours);
     }
 
 }

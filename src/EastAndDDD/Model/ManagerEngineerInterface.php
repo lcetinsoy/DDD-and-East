@@ -4,5 +4,5 @@ namespace EastAndDDD\Model;
 
 interface ManagerEngineerInterface {
 
-    public function wasAskedAPromotionBy(Engineer $engineer);
+    public function wasAskedAPromotionBy($engineerName);
 }

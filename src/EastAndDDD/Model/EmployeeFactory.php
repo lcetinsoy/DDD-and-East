@@ -4,7 +4,7 @@ namespace EastAndDDD\Model;
 
 class EmployeeFactory {
 
-    public static function hireManager($firstName, $lastName, $bankAccoundNumber, $title, $annualSalary, $engineers = array()) {
+    public static function hireManager($firstName, $lastName, $bankAccountNumber, $title, $annualSalary, $engineers = array()) {
 
         $credentials = new EmployeeCredentials($firstName . '.' . $lastName . '@myComp.eu', 'dkfjskldjf');
         $identityInfo = new IdentityInfo($firstName, $lastName, $bankAccountNumber);
@@ -12,7 +12,7 @@ class EmployeeFactory {
         return new Manager($credentials, $identityInfo, $position, $engineers);
     }
 
-    public static function hireEngineer($firstName, $lastName, $bankAccoundNumber, $title, $annualSalary) {
+    public static function hireEngineer($firstName, $lastName, $bankAccountNumber, $title, $annualSalary) {
 
         $credentials = new EmployeeCredentials($firstName . '.' . $lastName . '@myComp.eu', 'dkfjskldjf');
         $identityInfo = new IdentityInfo($firstName, $lastName, $bankAccountNumber);

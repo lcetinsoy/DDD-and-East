@@ -8,15 +8,15 @@ abstract class Employee {
     private $identityInfo;
     private $position;
 
-    function __construct(UserCredentials $credentials, UserIndentityInfo $identityInfo, Position $position) {
+    function __construct(EmployeeCredentials $credentials, IdentityInfo $identityInfo, Position $position) {
         $this->credentials = $credentials;
         $this->position = $position;
         $this->identityInfo = $identityInfo;
     }
 
-    function wasAskedLastNameBy(Repository $repository) {
+            function wasAskedLastNameBy(AbstractRepository $repository) {
 
-        $repository->employeeLastNameIs($this->identityInfo->getLastName);
+        $repository->employeeLastNameIs($this->identityInfo->getLastName());
     }
 
 }

@@ -2,13 +2,14 @@
 
 namespace EastAndDDD\Infrastructure;
 
+use EastAndDDD\Model\AbstractRepository;
 use EastAndDDD\Model\Employee;
 use EastAndDDD\Model\EmployeeRepositoryInterface;
 use EastAndDDD\Model\Engineer;
 use EastAndDDD\Model\Manager;
 use Exception;
 
-class EmployeeRepository implements EmployeeRepositoryInterface {
+class EmployeeRepository extends AbstractRepository implements EmployeeRepositoryInterface {
 
     private $employeeLastName;
     private $managers;
@@ -21,7 +22,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface {
 
     public function wasAskedToSaveEmployeeBy($controller, Employee $employee) {
 
-        $employee->wasAskedNameBy($this);
+        $employee->wasAskedLastNameBy($this);
 
         if (!$this->employeeLastName) {
 
@@ -35,26 +36,26 @@ class EmployeeRepository implements EmployeeRepositoryInterface {
         }
 
         if ($employee instanceof Manager) {
-            $this->managers[] = $employee;
+            $this->managers[$this->employeeLastName] = $employee;
         }
 
         if ($employee instanceof Engineer) {
-            $this->engineers[$employee->wasAskedNameBy($this)] = $employee;
+                $this->engineers[$this->employeeLastName] = $employee;
         }
 
         if ($controller) {
 
             $controller->employeeWasSaved();
         }
-        else{
-            echo "employee was saved";
+        else {
+            echo "employee was saved\n";
         }
         return $this;
     }
 
-    public function findManagerByFullName($managerName) {
+    public function findManagerByLastName($managerLastName) {
 
-        return $this->managers[$managerName];
+        return $this->managers[$managerLastName];
     }
 
     /** This is A setter ! :( */
