@@ -13,7 +13,7 @@ class Manager extends Employee implements ManagerEngineerInterface {
         $this->engineers = $engineers;
     }
 
-    public function engineerWasHired(Engineer $engineer) {
+    public function manageEngineer(Engineer $engineer) {
 
         $this->engineers[$engineer->getLastName()] = $engineer;
         return $this;

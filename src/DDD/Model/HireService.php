@@ -25,11 +25,10 @@ class HireService {
     public function engineerWasHiredBy(Manager $manager, $firstName, $lastName, $bankAccountNumber, $title, $annualSalary, $engineers = array()) {
 
         $engineer = EmployeeFactory::createEngineer($firstName, $lastName, $bankAccountNumber, $title, $annualSalary);
-        $manager->engineerWasHired($engineer);
+        $manager->manageEngineer($engineer);
         $this->employeRepository->updateManager($manager);
 
         return $this;
-                
     }
 
 }
