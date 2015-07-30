@@ -35,7 +35,6 @@ class Manager extends Employee implements ManagerEngineerInterface {
 
         if (!$this->performanceCriteria) {
 
-
             /** Not sure what to put here */
             return false;
         }
@@ -50,7 +49,7 @@ class Manager extends Employee implements ManagerEngineerInterface {
 
     private function wasEngineerEnoughPerformant(Performance $performance) {
 
-        return $performance->isHigherThan($this->performanceCriteria);
+        return $performance->givesSatisfaction($this->performanceCriteria);
     }
 
     private function findEngineer($engineerName) {
