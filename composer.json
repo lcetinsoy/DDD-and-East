@@ -1,0 +1,10 @@
+{
+    "require": {
+        "atoum/atoum": "~2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "EastAndDDD\\": "src/EastAndDDD/"
+        }
+    }
+}
