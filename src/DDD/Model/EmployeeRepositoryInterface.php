@@ -4,5 +4,9 @@ namespace DDD\Model;
 
 
 interface EmployeeRepository {
-    //put your code here
+
+
+    public function saveManager(Manager $manager);
+
+
 }

@@ -2,9 +2,60 @@
 
 namespace DDD\Model;
 
-class Manager extends EastAndDDD\User {
+class Manager extends Employee implements ManagerEngineerInterface {
+
+    private $engineers;
+    private $performanceCriteria;
+
+    function __construct(EmployeeCredentials $credentials, IdentityInfo $identityInfo, Position $position, array $engineers) {
+
+        parent::__construct($credentials, $identityInfo, $position);
+        $this->engineers = $engineers;
+    }
+
+    public function engineerWasHired(Engineer $engineer) {
+
+        $this->engineers[$engineer->getLastName()] = $engineer;
+        return $this;
+    }
+
+    public function definePerformanceCriteria(Performance $performance) {
+
+        $this->performanceCriteria = $performance;
+
+        return $this;
+    }
+
+    public function promoteEngineer($engineerName) {
+
+        $engineer = $this->findEngineer($engineerName);
+
+        /* @var $engineer Engineer */
+        $performance = new Performance($engineer->getBilledHours());
+
+        if (!$this->performanceCriteria) {
 
 
+            /** Not sure what to put here */
+            return false;
+        }
 
-    
+        if ($this->wasEngineerEnoughPerformant($performance)) {
+
+            $engineer->promote(new Promotion('Senior engineer', 10));
+        }
+
+        return $this;
+    }
+
+    private function wasEngineerEnoughPerformant(Performance $performance) {
+
+        return $performance->isHigherThan($this->performanceCriteria);
+    }
+
+    private function findEngineer($engineerName) {
+
+        return $this->engineers[$engineerName];
+    }
+
 }
