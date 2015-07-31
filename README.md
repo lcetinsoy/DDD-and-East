@@ -10,7 +10,7 @@ However, although DDD models are way more expressive than they CRUD counterparts
 – by showing code intent with the “Tell don’t ask” principle, they often still contains procedural artefacts. 
 Independantly, a movement called EAST[2] has tried to reconnect to the original object paradigm by restoring
 the “Big idea [that] is messaging” [3]: objects are black box totally abstracting their implementation and
-they communicate with each other through defined protocols, the interfaces. 
+they communicate by exchanging messages with each other through defined protocols, the interfaces. 
 
 In this talk we will rediscover OOP original intent through the EAST principles, what their benefits are and how to design such objects. 
 Then we will discuss how EAST can allow a better modeling of domain interactions and how we can bridge the gap between DDD designs and EAST designs. 
