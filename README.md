@@ -13,5 +13,5 @@ Meanwhile, a movement called EAST has reconnected to the original object paradig
 Its idea is to restore the “Big idea [that] is messaging” [3]: objects are black box totally abstracting their implementation and
 they communicate with others object through defined protocols, the interfaces. 
 
-In this talk we will rediscover original intent through the EAST principles, what their benefits are and how to design such objects. 
-Then we will discuss how EAST can allow to better model domain interactions and how we can bridge the gap between DDD designs and EAST designs. 
+In this talk we will rediscover OOP original intent through the EAST principles, what their benefits are and how to design such objects. 
+Then we will discuss how EAST can allow a better modeling of domain interactions and how we can bridge the gap between DDD designs and EAST designs. 
