@@ -4,7 +4,7 @@ Doing some experimentation to see how DDD concept are compatibles with East para
 ##Abstract for DDDEurope
 
 Since its definition by Alan Key, the nature of object oriented paradigm has been corrupted by procedural thinking artefacts.
-One could explain "our big industry failure" [1], by which all software where once built as CRUD system, as the consequence of such corruption. 
+One could explain "our grand failure" [1] namely, selling software as CRUD systems only, as a consequence of such corruption. 
 DDD emerged as a response and allowed major improvements in the software industry by placing the model at the core of the design. 
 However, although DDD models are way more expressive than they CRUD counterparts 
 – by showing code intent with the “Tell don’t ask” principle, they often still contains procedural artefacts. 
