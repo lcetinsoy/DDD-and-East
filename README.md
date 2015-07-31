@@ -27,3 +27,5 @@ Then we will discuss how EAST can allow a better modeling of domain interactions
 [[4] Frederic Hardy - Voyage vers l'est (In french)](http://blog.est.voyage/phpTour2015/) 
 
 [[5]  Peter Di Salvo - Dazzled and confused] (https://thesecretsquad.wordpress.com/2014/10/25/dazed-and-confuzzled/)  
+
+[6] Sandi Metz - Practical Object-Oriented Design in Ruby 
