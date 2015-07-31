@@ -2,7 +2,7 @@
 
 namespace EastAndDDD\Model;
 
-abstract class Employee {
+class Employee {
 
     private $credentials;
     private $identityInfo;
