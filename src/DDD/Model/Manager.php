@@ -39,17 +39,12 @@ class Manager extends Employee implements ManagerEngineerInterface {
             return false;
         }
 
-        if ($this->wasEngineerEnoughPerformant($performance)) {
+        if ($performance->givesSatisfaction($this->performanceCriteria)) {
 
             $engineer->promote(new Promotion('Senior engineer', 10));
         }
 
         return $this;
-    }
-
-    private function wasEngineerEnoughPerformant(Performance $performance) {
-
-        return $performance->givesSatisfaction($this->performanceCriteria);
     }
 
     private function findEngineer($engineerName) {
