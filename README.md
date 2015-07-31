@@ -19,5 +19,11 @@ Then we will discuss how EAST can allow a better modeling of domain interactions
 ###References
 
 [[1] Greg Young - Our grand failure](http://herdingcode.com/herding-code-51-greg-young-on-our-grand-failure-thoughts-on-dddd/)
+
 [[2] James Ladden - A design Compass - East oriented](http://jamesladdcode.com/2007/02/02/draft-a-design-compass-east-oriented/) 
+
 [3] Alan Key
+
+[[4] Frederic Hardy - Voyage vers l'est (In french)](http://blog.est.voyage/phpTour2015/) 
+
+[[5]  Peter Di Salvo - Dazzled and confused] (https://thesecretsquad.wordpress.com/2014/10/25/dazed-and-confuzzled/)  
