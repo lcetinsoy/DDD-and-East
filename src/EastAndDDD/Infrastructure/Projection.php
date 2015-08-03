@@ -3,8 +3,10 @@
 namespace EastAndDDD\Infrastructure;
 
 use EastAndDDD\Model\ProjectableInterface;
+use EastAndDDD\Model\ProjectionInterface;
+use Exception;
 
-class Projection {
+class Projection implements ProjectionInterface{
 
     protected $projections;
 

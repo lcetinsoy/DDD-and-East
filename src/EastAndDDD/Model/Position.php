@@ -2,8 +2,6 @@
 
 namespace EastAndDDD\Model;
 
-use EastAndDDD\Infrastructure\Projection;
-
 class Position implements ProjectableInterface {
 
     private $position;
@@ -14,11 +12,13 @@ class Position implements ProjectableInterface {
         $this->annualIncome = $annualIncome;
     }
 
-    public function project(Projection $projector) {
+    public function project(ProjectionInterface $projector) {
 
+        $projector
+                ->projectScalar($this->position, 'position')
+                ->projectScalar($this->annualIncome, 'annualIncome')
+        ;
 
-        $projector->projectScalar($this->position)
-                ->projectScalar($this->annualIncome);
         return $this;
     }
 

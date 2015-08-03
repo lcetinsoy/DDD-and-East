@@ -2,8 +2,6 @@
 
 namespace EastAndDDD\Model;
 
-use EastAndDDD\Infrastructure\Projection;
-
 class IdentityInfo implements ProjectableInterface {
 
     private $name;
@@ -20,7 +18,7 @@ class IdentityInfo implements ProjectableInterface {
         return $this->lastName;
     }
 
-    function project(Projection $projector) {
+    function project(ProjectionInterface $projector) {
 
         $projector
                 ->projectScalar($this->name, 'name')

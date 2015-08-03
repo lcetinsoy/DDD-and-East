@@ -2,7 +2,6 @@
 
 namespace EastAndDDD\Model;
 
-use EastAndDDD\Infrastructure\Projection;
 use EastAndDDD\Model\ProjectableInterface;
 
 class Manager extends Employee implements ManagerEngineerInterface, ProjectableInterface {
@@ -78,7 +77,7 @@ class Manager extends Employee implements ManagerEngineerInterface, ProjectableI
         return $this->engineers[$engineerName];
     }
 
-    public function project(Projection $projector) {
+    public function project(ProjectionInterface $projector) {
 
         parent::project($projector);
 
