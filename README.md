@@ -1,6 +1,20 @@
 # DDD-and-East
 Doing some experimentation to see how DDD concept are compatibles with East paradigm
 
+
+## Installation
+
+git clone https://github.com/lce/DDD-and-East
+
+
+## Usage
+
+cd DDD-and-East
+
+php src/DDD/example.php
+php src/EastAndDDD/example.php
+
+
 ##Abstract for DDDEurope
 
 Since its definition by Alan Key, the nature of object oriented paradigm has been corrupted by procedural thinking artefacts.
