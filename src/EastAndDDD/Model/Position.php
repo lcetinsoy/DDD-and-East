@@ -11,13 +11,4 @@ class Position {
         $this->position = $position;
         $this->annualIncome = $annualIncome;
     }
-
-    function getPosition() {
-        return $this->position;
-    }
-
-    function getAnnualIncome() {
-        return $this->annualIncome;
-    }
-
 }

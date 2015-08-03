@@ -10,7 +10,6 @@ class Performance {
         $this->numberOfBillingHours = $numberOfBillingHours;
     }
 
-
     function isHigherThan(self $performanceCriteria){
 
         return $this->numberOfBillingHours >= $performanceCriteria->numberOfBillingHours;

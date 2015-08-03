@@ -6,6 +6,7 @@ class Manager extends Employee implements ManagerEngineerInterface {
 
     private $engineers;
     private $performanceCriteria;
+    private $engineerPerformance;
 
     function __construct(EmployeeCredentials $credentials, IdentityInfo $identityInfo, Position $position, $engineers) {
 
@@ -38,16 +39,16 @@ class Manager extends Employee implements ManagerEngineerInterface {
 
         $engineer = $this->findEngineer($engineerName);
         /* @var $engineer Engineer */
-        $performance = $engineer->wasRequestedPerformanceDataBy($this);
 
         if (!$this->performanceCriteria) {
+
             $engineer->promotionWillBeStudied($this);
             return $this;
         }
 
-        if ($this->wasEngineerEnoughPerformant($performance)) {
+        if ($this->wasEngineerEnoughPerformant($engineer)) {
 
-            $engineer->promotionWasAcceptedBy($this, new Promotion('Senior engineer', 10));
+            $engineer->promotionWasAcceptedBy($this, new Position('Senior engineer', 10));
         }
         else {
 
@@ -57,9 +58,17 @@ class Manager extends Employee implements ManagerEngineerInterface {
         return $this;
     }
 
-    private function wasEngineerEnoughPerformant(Performance $performance) {
+    public function engineerPerformanceIs(Performance $performance) {
 
-        return $performance->isHigherThan($this->performanceCriteria);
+        $this->engineerPerformance = $performance;
+
+        return $this;
+    }
+
+    private function wasEngineerEnoughPerformant(Engineer $engineer) {
+
+        $engineer->wasRequestedPerformanceDataBy($this);
+        return $this->engineerPerformance->isHigherThan($this->performanceCriteria);
     }
 
     private function findEngineer($engineerName) {

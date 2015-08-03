@@ -21,4 +21,11 @@ class Employee {
         return $this;
     }
 
+    public function positionIs(Position $position) {
+
+        $this->position = $position;
+
+        return $this;
+    }
+
 }

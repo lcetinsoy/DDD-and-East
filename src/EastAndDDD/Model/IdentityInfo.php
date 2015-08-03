@@ -14,11 +14,6 @@ class IdentityInfo {
         $this->bankAccountNumber = $bankAccountNumber;
     }
 
-    public function equalsTo(self $identity) {
-
-        return $this->bankAccountNumber == $identity->bankAccountNumber;
-    }
-
     function getName() {
         return $this->name;
     }

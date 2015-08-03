@@ -25,13 +25,10 @@ class Engineer extends Employee implements EngineerManagerInterface {
         return $this;
     }
 
-    public function promotionWasAcceptedBy(Manager $manager, Promotion $newPromotion) {
+    public function promotionWasAcceptedBy(Manager $manager, Position $newPosition) {
 
-        $this->position = $newPromotion->getNewPosition();
-
-        $this->annualPay *= 1 + $newPromotion->getPayIncreaseRate();
-
-        $manager->wasThankedBy(this);
+        $this->positionIs($newPosition);
+        $manager->wasThankedBy($this);
 
         return $this;
     }
@@ -43,7 +40,10 @@ class Engineer extends Employee implements EngineerManagerInterface {
     }
 
     public function wasRequestedPerformanceDataBy(Manager $manager) {
-        return new Performance($this->billedHours);
+
+        $manager->engineerPerformanceIs(new Performance($this->billedHours));
+
+        return $this;
     }
 
 }

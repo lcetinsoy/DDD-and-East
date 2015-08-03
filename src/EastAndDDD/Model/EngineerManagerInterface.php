@@ -4,7 +4,7 @@ namespace EastAndDDD\Model;
 
 interface EngineerManagerInterface {
 
-    public function promotionWasAcceptedBy(Manager $manager, Promotion $promotion);
+    public function promotionWasAcceptedBy(Manager $manager, Position $newPosition);
 
     public function promotionWasRefusedBy(Manager $manager);
 
