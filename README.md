@@ -4,7 +4,7 @@ Doing some experimentation to see how DDD concept are compatibles with East para
 
 ## Installation
 
-git clone https://github.com/lce/DDD-and-East
+git clone https://github.com/lce-fr/DDD-and-East
 
 
 ## Usage
