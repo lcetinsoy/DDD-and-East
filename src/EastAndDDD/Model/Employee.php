@@ -2,7 +2,9 @@
 
 namespace EastAndDDD\Model;
 
-class Employee {
+use EastAndDDD\Infrastructure\Projection;
+
+class Employee implements ProjectableInterface {
 
     private $credentials;
     private $identityInfo;
@@ -24,6 +26,14 @@ class Employee {
     public function positionIs(Position $position) {
 
         $this->position = $position;
+
+        return $this;
+    }
+
+    public function project(Projection $projector) {
+
+        $projector
+                ->project($this->identityInfo, 'identity');
 
         return $this;
     }

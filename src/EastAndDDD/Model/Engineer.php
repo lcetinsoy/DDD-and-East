@@ -2,6 +2,8 @@
 
 namespace EastAndDDD\Model;
 
+use EastAndDDD\Infrastructure\Projection;
+
 class Engineer extends Employee implements EngineerManagerInterface {
 
     private $billedHours;
@@ -42,6 +44,15 @@ class Engineer extends Employee implements EngineerManagerInterface {
     public function wasRequestedPerformanceDataBy(Manager $manager) {
 
         $manager->engineerPerformanceIs(new Performance($this->billedHours));
+
+        return $this;
+    }
+
+    public function project(Projection $projector) {
+
+        parent::project($projector);
+
+        $projector->projectScalar($this->billedHours, 'billedHours');
 
         return $this;
     }

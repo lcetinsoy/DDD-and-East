@@ -2,7 +2,10 @@
 
 namespace EastAndDDD\Model;
 
-class Manager extends Employee implements ManagerEngineerInterface {
+use EastAndDDD\Infrastructure\Projection;
+use EastAndDDD\Model\ProjectableInterface;
+
+class Manager extends Employee implements ManagerEngineerInterface, ProjectableInterface {
 
     private $engineers;
     private $performanceCriteria;
@@ -52,7 +55,6 @@ class Manager extends Employee implements ManagerEngineerInterface {
         }
         else {
 
-
             $engineer->promotionWasRefusedBy($this);
         }
         return $this;
@@ -74,6 +76,15 @@ class Manager extends Employee implements ManagerEngineerInterface {
     private function findEngineer($engineerName) {
 
         return $this->engineers[$engineerName];
+    }
+
+    public function project(Projection $projector) {
+
+        parent::project($projector);
+
+        $projector->projectArray($this->engineers, 'engineers');
+
+        return $this;
     }
 
 }

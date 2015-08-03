@@ -25,20 +25,22 @@ class HireService {
 
         $engineer = EmployeeFactory::createEngineer($firstName, $lastName, $bankAccountNumber, $title, $annualSalary);
         $manager->engineerWasHired($engineer, $lastName);
-        $this->employeRepository->engineerWasHired($engineer);
-
+        $this->employeRepository->saveHiredEngineer($engineer);
 
         return $this;
     }
 
     public function cannotSaveEmployee($reason) {
+
         echo $reason;
+
         return $this;
     }
 
     public function managerWasSaved() {
 
         echo "Manager saved\n";
+
         return $this;
     }
 

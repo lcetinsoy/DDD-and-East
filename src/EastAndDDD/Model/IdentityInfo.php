@@ -2,7 +2,9 @@
 
 namespace EastAndDDD\Model;
 
-class IdentityInfo {
+use EastAndDDD\Infrastructure\Projection;
+
+class IdentityInfo implements ProjectableInterface {
 
     private $name;
     private $lastName;
@@ -14,16 +16,17 @@ class IdentityInfo {
         $this->bankAccountNumber = $bankAccountNumber;
     }
 
-    function getName() {
-        return $this->name;
-    }
-
     function getLastName() {
         return $this->lastName;
     }
 
-    function getBankAccountNumber() {
-        return $this->bankAccountNumber;
+    function project(Projection $projector) {
+
+        $projector
+                ->projectScalar($this->name, 'name')
+                ->projectScalar($this->lastName, 'lastName');
+
+        return $this;
     }
 
 }

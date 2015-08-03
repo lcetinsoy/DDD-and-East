@@ -1,6 +1,8 @@
 <?php
 
+use EastAndDDD\Infrastructure\ConsoleRenderer;
 use EastAndDDD\Infrastructure\EmployeeRepository;
+use EastAndDDD\Infrastructure\Projection;
 use EastAndDDD\Model\HireService;
 use EastAndDDD\Model\Manager;
 use EastAndDDD\Model\Performance;
@@ -14,8 +16,6 @@ $manager = $hireService->managerWasHired('Peter', 'Smith', 'khsubvv', 'Product m
 
 $hireService->engineerWasHiredBy($manager, 'Pamela', 'Andersen', 'jklsdkj44', 'junior engineer', 34000);
 
-
-
 /* @var $manager Manager  */
 $manager = $employeeRepository->findManagerByLastName('Smith');
 
@@ -23,4 +23,7 @@ $manager->wasAskedAPromotionBy('Andersen');
 
 $manager->establishedNewPerformanceCriteria(new Performance(10));
 $manager->wasAskedAPromotionBy('Andersen');
+
+$projector = new Projection();
+$projector->project($manager)->render(new ConsoleRenderer());
 

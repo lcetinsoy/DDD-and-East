@@ -12,5 +12,4 @@ class EmployeeCredentials {
         $this->password = $password;
     }
 
-   
 }

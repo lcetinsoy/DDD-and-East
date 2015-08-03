@@ -44,7 +44,7 @@ class EmployeeRepository extends AbstractRepository implements EmployeeRepositor
         return $this;
     }
 
-    public function engineerWasHired($engineer) {
+    public function saveHiredEngineer($engineer) {
 
         $this->engineers[] = $engineer;
 
