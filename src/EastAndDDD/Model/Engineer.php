@@ -42,7 +42,7 @@ class Engineer extends Employee implements EngineerManagerInterface {
 
     public function wasRequestedPerformanceDataBy(Manager $manager) {
 
-        $manager->engineerPerformanceIs(new Performance($this->billedHours));
+        $manager->engineerPerformanceIs(new Performance($this, $this->billedHours));
 
         return $this;
     }

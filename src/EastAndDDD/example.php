@@ -21,9 +21,8 @@ $manager = $employeeRepository->findManagerByLastName('Smith');
 
 $manager->wasAskedAPromotionBy('Andersen');
 
-$manager->establishedNewPerformanceCriteria(new Performance(10));
+$manager->establishedNewPerformanceCriteriaFor('Andersen', 13);
 $manager->wasAskedAPromotionBy('Andersen');
 
 $projector = new Projection();
 $projector->project($manager)->render(new ConsoleRenderer());
-

@@ -6,13 +6,27 @@ class Performance {
 
     private $numberOfBillingHours;
 
-    function __construct($numberOfBillingHours) {
+    private $employee;
+
+    function __construct(Employee $employee, $numberOfBillingHours) {
         $this->numberOfBillingHours = $numberOfBillingHours;
+
+        $this->employee = $employee;
     }
 
-    function isHigherThan(self $performanceCriteria){
+    function wasComparedBy(Manager $manager, self $performanceCriteria){
 
-        return $this->numberOfBillingHours >= $performanceCriteria->numberOfBillingHours;
-    
+        if ($this->numberOfBillingHours >= $performanceCriteria->numberOfBillingHours){
+
+          $manager->wasSatisfiedByEngineerPerformance($this->employee);
+        }
+
+        else{
+
+          $manager->wasNotSatisfiedByEngineerPerformance($this->employee);
+        }
+
+        return $this;
+
     }
 }

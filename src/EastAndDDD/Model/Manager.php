@@ -23,9 +23,15 @@ class Manager extends Employee implements ManagerEngineerInterface, ProjectableI
         return $this;
     }
 
-    public function establishedNewPerformanceCriteria(Performance $performance) {
+    public function establishedNewPerformanceCriteriaFor($engineerName, $billingHourPerformance) {
 
-        $this->performanceCriteria = $performance;
+
+        $engineer =  $this->engineers[$engineerName];
+        if (!$engineer){
+            throw new \Exception('Manager does not manager ' . $engineerName);
+        }
+
+        $this->performanceCriteria = new Performance($engineer, $billingHourPerformance);
 
         return $this;
     }
@@ -48,34 +54,46 @@ class Manager extends Employee implements ManagerEngineerInterface, ProjectableI
             return $this;
         }
 
-        if ($this->wasEngineerEnoughPerformant($engineer)) {
+        $this->wasEngineerEnoughPerformant($engineer);
 
-            $engineer->promotionWasAcceptedBy($this, new Position('Senior engineer', 10));
-        }
-        else {
-
-            $engineer->promotionWasRefusedBy($this);
-        }
         return $this;
     }
 
-    public function engineerPerformanceIs(Performance $performance) {
+    public function wasSatisfiedByEngineerPerformance($engineer){
 
-        $this->engineerPerformance = $performance;
+        $engineer->promotionWasAcceptedBy($this, new Position('Senior engineer', 42000));
 
         return $this;
+    }
+
+    public function wasNotSatisfiedByEngineerPerformance($engineer){
+
+        $engineer->promotionWasRefusedBy($this);
+
+        return $this;
+
+    }
+
+    public function engineerPerformanceIs(Performance $performance){
+      $this->engineerPerformance = $performance;
     }
 
     private function wasEngineerEnoughPerformant(Engineer $engineer) {
 
         $engineer->wasRequestedPerformanceDataBy($this);
-        return $this->engineerPerformance->isHigherThan($this->performanceCriteria);
+
+        $this->performanceCriteria->wasComparedBy($this, $this->performanceCriteria);
+
+        return $this;
+
     }
 
     private function findEngineer($engineerName) {
 
         return $this->engineers[$engineerName];
     }
+
+
 
     public function project(ProjectionInterface $projector) {
 
